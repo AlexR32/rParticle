@@ -1,4 +1,4 @@
-local Particle = require(script.Particle);
+local Particle = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/rParticle/master/src/ParticleEmitter/Particle.lua"))();
 local ParticleEmitter = {};
 ParticleEmitter.__index = ParticleEmitter
 
