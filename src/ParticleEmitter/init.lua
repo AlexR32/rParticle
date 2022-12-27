@@ -1,4 +1,5 @@
 local Particle = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/rParticle/master/src/ParticleEmitter/Particle.lua"))();
+
 local ParticleEmitter = {};
 ParticleEmitter.__index = ParticleEmitter
 
@@ -56,7 +57,7 @@ end
 	Emits particle(s) given a count
 ]]
 function ParticleEmitter:Emit(count)
-	if count < 1 then return {} end
+	if count < 1 then return end
 	for _=count,1,-1 do
 		table.insert(self.particles, spawnParticle(self.hook, self.particleElement, self.onSpawn));
 	end
