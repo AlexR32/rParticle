@@ -1,43 +1,37 @@
-local Particle = {};
-Particle.__index = Particle;
+local Particle = {}
+Particle.__index = Particle
 
-function Particle.new(element)
-	local self = {};
-	self.element = element;
-	self.position = Vector2.zero;
-	self.velocity = Vector2.zero;
-	self.age = 0;
-	self.ticks = 0;
-	self.maxAge = 1;
-	self.isDead = false;
+function Particle.new(Object)
+    local Self = setmetatable({},Particle)
+    Self.Object = Object
+    Self.Dead = false
+    Self.MaxAge = 1
+    Self.Ticks = 0
+    Self.Age = 0
 
-	return setmetatable(self, Particle);
+    Self.Position = Vector2.zero
+    Self.Velocity = Vector2.zero
+
+    return Self
 end
 
-function Particle:Update(delta, onUpdate)
-	
-	if self.age >= self.maxAge and self.maxAge > 0 then 
-		self:Destroy()
-		return;
-	end;
+function Particle.Update(Self,Delta,OnUpdate)
+    if Self.Age >= Self.MaxAge and Self.MaxAge > 0 then 
+        Self:Destroy() return
+    end
 
-	-- Update some properties
-	self.ticks = self.ticks + 1;
-	self.age = self.age + delta;	-- Make it a little older
+    Self.Ticks += 1
+    Self.Age += Delta
 
-	-- Callback
-	onUpdate(self, delta)
-	
-	-- Apply the forces
-	self.element.Position = UDim2.fromOffset(
-		self.position.X, self.position.Y
-	);
-
+    OnUpdate(Self,Delta)
+    Self.Object.Position = UDim2.fromOffset(
+        Self.Position.X,Self.Position.Y
+    )
 end
 
-function Particle:Destroy()
-	self.isDead = true;
-	self.element:Destroy();
+function Particle.Destroy(Self)
+    Self.Dead = true
+    Self.Object:Destroy()
 end
 
-return Particle;
+return Particle
