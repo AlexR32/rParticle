@@ -24,7 +24,7 @@ function ParticleEmitter.new(ParentObject,ParticleObject)
 
     Self.Connection = RunService.RenderStepped:Connect(function(Delta)
         for Index,Particle in ipairs(Self.Particles) do
-            if Particle.Dead then 
+            if Particle.Dead then
                 table.remove(Self.Particles,Index)
             else
                 Particle:Update(Delta,Self.OnUpdate)
@@ -59,7 +59,7 @@ end
 
 function ParticleEmitter.Destroy(Self)
     if Self.Dead then
-        error('Cannot Destroy Dead ParticleEmitter')
+        error("Cannot Destroy Dead ParticleEmitter")
         return
     end
 
@@ -68,6 +68,7 @@ function ParticleEmitter.Destroy(Self)
     for Index,Particle in ipairs(Self.Particles) do
         if Particle then Particle:Destroy() end
     end
+
     if Self.Connection then
         Self.Connection:Disconnect()
     end

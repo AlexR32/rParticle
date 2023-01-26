@@ -3,6 +3,7 @@ Particle.__index = Particle
 
 function Particle.new(Object)
     local Self = setmetatable({},Particle)
+
     Self.Object = Object
     Self.Dead = false
     Self.MaxAge = 1
@@ -16,7 +17,7 @@ function Particle.new(Object)
 end
 
 function Particle.Update(Self,Delta,OnUpdate)
-    if Self.Age >= Self.MaxAge and Self.MaxAge > 0 then 
+    if Self.Age >= Self.MaxAge and Self.MaxAge > 0 then
         Self:Destroy() return
     end
 
