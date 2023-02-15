@@ -4,7 +4,7 @@ Super light weight and highly customizable 2D particle system for Roblox.
 
 ## Documentation / Example
 ```lua
-local ParticleEmitter = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/rParticle/master/ParticleEmitter.lua"))()
+local ParticleEmitter = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/rParticle/master/Main.lua"))()
 
 ParticleEmitter.SpawnRate = 5 -- The number of particles to be emitted per second
 ParticleEmitter.OnSpawn = function(Particle) -- A callback function called when a particle is spawned
